@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Gorilla WebSocket
+    </title>
+</head>
+<body>
+<h1>Hello WebSockets</h1>
+<div id="details"></div>
+<script>
+    var ws3 = new WebSocket("ws://localhost:3000/v3/ws");
+    ws3.addEventListener("message", function(e){
+        let details = document.getElementById('details')
+        var p = document.createElement("p")
+        p.innerText = e.data
+        details.appendChild(p)
+    })
+
+</script>
+</body>
+</html>
