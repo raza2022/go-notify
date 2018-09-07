@@ -42,9 +42,9 @@ func main() {
 
 			for range ch {
 				conn.WriteJSON(myStruct{
-					Username:  "mvansickle",
-					FirstName: "Michael",
-					LastName:  "Van Sickle",
+					Username:  "Abdul Hameed",
+					FirstName: "test",
+					LastName:  "bakerz ssssss",
 				})
 			}
 		}(conn)
