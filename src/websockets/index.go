@@ -7,12 +7,21 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-var upgrader = websocket.Upgrader{}
+//var upgrader = websocket.Upgrader{}
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:    4096,
+	WriteBufferSize:   4096,
+	EnableCompression: true,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "index.html")
-	})
+	//http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	//	http.ServeFile(w, r, "index.html")
+	//})
 
 	http.HandleFunc("/v1/ws", func(w http.ResponseWriter, r *http.Request) {
 		var conn, _ = upgrader.Upgrade(w, r, nil)
